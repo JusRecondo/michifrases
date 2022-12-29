@@ -1,7 +1,7 @@
-import html2canvas from 'html2canvas';
 import React, {useState } from 'react';
 import { drawImage } from '../../lib/utils';
 import downloadjs from 'downloadjs';
+import html2canvas from 'html2canvas';
 import { ITextStyles } from '../../types/models';
 import Button from '../Button/Button';
 import styles from './ImagePreviewAndDownload.module.scss';

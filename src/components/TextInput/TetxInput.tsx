@@ -1,7 +1,6 @@
 import React from 'react';
 import { ITextInputProps} from '../../types/models';
 
-//rename as textinput
 const TextInput: React.FC<ITextInputProps> = ({label, onInput, value, maxLength}) => {
     return (
         <div className="field-row-stacked">

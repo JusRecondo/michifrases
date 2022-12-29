@@ -3,6 +3,7 @@ import EditPage from './pages/EditPage/EditPage';
 import Home from './pages/Home/Home';
 import './styles/App.scss';
 import '98.css';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                         path="/michifrases/edit-cat/:id"
                         element={<EditPage />}
                     />
+                    <Route path='*' element={<NotFound />} />
                 </Routes>
             </main>
         </div>

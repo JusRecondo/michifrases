@@ -10,6 +10,7 @@ article {
     width: 600px;
     max-width: 100%;
     font-size: 6px;
+    background-color: #000000;
 
     @include media-md {
         font-size: 10px;
@@ -28,7 +29,7 @@ article {
         left: 0;
         right: 0;
         margin: auto;
-        max-width: 500px;
+        max-width: 280px;
         z-index: 1;
         text-align: center;
         color: #000000;
@@ -40,6 +41,10 @@ article {
         &:nth-child(3) {
             top: auto;
             bottom: 20px;
+        }
+
+        @include media-md {
+            max-width: 500px;
         }
     }
 }

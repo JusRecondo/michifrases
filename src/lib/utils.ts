@@ -66,6 +66,8 @@ export const drawImage = (
         canvas.height = imgHeight;
         canvas.width = imgWidth;
 
+        console.log('imgw: ', imgWidth, 'imnw:', imageObj.naturalWidth)
+
         canvasImg.onload = () => {
             ctx.drawImage(
                 canvasImg,
@@ -74,7 +76,7 @@ export const drawImage = (
                 imageObj.naturalWidth,
                 imageObj.naturalHeight,
                 0,
-                30,
+                0,
                 imgWidth,
                 imgHeight
             );
@@ -101,6 +103,6 @@ function drawText(
     ctx.textBaseline = 'middle';
     ctx.font = `600 ${size} ${font}`;
     ctx.textAlign = 'center';
-    position === 'top' && ctx.fillText(text, imgWidth / 2, 80, 600);
-    position === 'bottom' && ctx.fillText(text, imgWidth / 2, imgHeight - 50, 600);
+    position === 'top' && ctx.fillText(text, imgWidth / 2, 80, imgWidth - 10);
+    position === 'bottom' && ctx.fillText(text, imgWidth / 2, imgHeight - 50, imgWidth - 10);
 }
