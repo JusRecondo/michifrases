@@ -13,7 +13,7 @@ function App() {
             </header>
             <main>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/michifrases" element={<Home />} />
                     <Route path="/edit-cat/:id" element={<EditPage />} />
                 </Routes>
             </main>
