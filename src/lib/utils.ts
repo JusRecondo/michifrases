@@ -83,7 +83,7 @@ export const drawImage = (
             resolve(true);
         };
         canvasImg.crossOrigin = 'anonymous';
-        canvasImg.src = PROXY_SERVER + imageObj.src + "?=not-cache";
+        canvasImg.src = PROXY_SERVER + imageObj.src;
     });
 };
 
