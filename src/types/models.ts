@@ -1,3 +1,4 @@
+/* API Data */
 export interface ICat {
     id: string;
     width: string;
@@ -12,9 +13,22 @@ export interface ICategories {
     name: string;
 }
 
+/* Components Props */
 
-export interface InputProps {
+export interface ITextInputProps {
     label: string;
     onInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
     value: string;
+    maxLength: number
+}
+
+export interface iButtonProps {
+	children: React.ReactNode;
+	handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export interface ITextStyles {
+    font: string;
+    size: string;
+    color: string;
 }

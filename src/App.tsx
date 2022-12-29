@@ -1,23 +1,27 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import EditPage from './pages/EditPage/EditPage';
 import Home from './pages/Home/Home';
 import './styles/App.scss';
+import '98.css';
 
 function App() {
     return (
-        <BrowserRouter>
+        <div className="app">
             <header>
-                <h1>Michi Frases</h1>
-                <h2>App para crear fotos de gatitos con frases</h2>
+                <h1 className="h1">michifrases.exe</h1>
+                <hr />
+                <p>Indispensable web para crear fotos de michis con frases.</p>
             </header>
             <main>
                 <Routes>
                     <Route path="/michifrases" element={<Home />} />
-                    <Route path="/edit-cat/:id" element={<EditPage />} />
+                    <Route
+                        path="/michifrases/edit-cat/:id"
+                        element={<EditPage />}
+                    />
                 </Routes>
             </main>
-        </BrowserRouter>
+        </div>
     );
 }
 

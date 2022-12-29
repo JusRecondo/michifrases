@@ -1,24 +1,30 @@
 import React from 'react';
+import style from './Select.module.scss';
 
 interface Props {
-    options: {id: string | number, name: string}[]
+    label: string;
+    options: { id: string | number; name: string }[];
     onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    value?: string | number;
 }
 
-const Select: React.FC<Props> = ({options, onChange}) => {
-
+const Select: React.FC<Props> = ({ label, options, onChange, value }) => {
     return (
-        <div>
-            <select onChange={onChange}>
-                {options ?
-                    options.map(option => (
-                        <option key={option.id} value={option.id}>
-                            {option.name}
-                        </option>
-                    ))
-                : ''}
+        <label className='label'>{label}
+            <select onChange={onChange} value={value} className={style.select}>
+                {options
+                    ? options.map(option => (
+                          <option
+                              key={option.id}
+                              value={option.id}
+                              className={style.option}
+                          >
+                              {option.name}
+                          </option>
+                      ))
+                    : ''}
             </select>
-        </div>
+        </label>
     );
 };
 

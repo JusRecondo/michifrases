@@ -16,35 +16,3 @@
 		@content;
 	}
 }
-
-/* Buttons & Dropdowns */
-@mixin primary {
-	background-color: $blue;
-	color: $white;
-}
-
-@mixin secondary {
-	background-color: $light-blue;
-	color: $white;
-}
-
-@mixin outline {
-	border: 2px solid $blue;
-	background-color: $white;
-	color: $blue;
-}
-
-@mixin disabled {
-	background-color: $grey;
-	color: $black;
-}
-
-@mixin light {
-	background-color: $white;
-	color: $black;
-}
-
-@mixin dark {
-	background-color: $black;
-	color: $white;
-}

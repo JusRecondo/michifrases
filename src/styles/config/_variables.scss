@@ -1,19 +1,6 @@
 /* Colors */
-$blue: #3852A7;
-$light-blue: #4E97DC;
-$light-blue2: #d3e8fd;
-$white: #FFFFFF;
-$grey: #E8E8E8;
-$black: #303030;
-$violet: #a299d2; 
-$green: #c4ca6a;
-$dark-green: #74b289;
-$red: #b25357;
-$orange: #e39d45;
-$bg-white: #FAFAFA;
-
-/* Fonts */
-$main-font: 'Montserrat', sans-serif;
+$primary-color: #c0c0c0;
+$secondary-color: #222;
 
 /* Breakpoints */
 $breakpoint-md: 768px;
@@ -22,3 +9,6 @@ $breakpoint-xl: 1536px;
 
 /* Img directory */
 $img-directory: '../../../public/';
+
+/* Max width for containers*/
+$max-width: 1000px;

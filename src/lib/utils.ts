@@ -3,21 +3,14 @@ import {
     API_URL_CATEGORIES,
     API_URL_IMAGES,
     API_URL_IMAGES_BY_CATEGORY,
+    PROXY_SERVER,
 } from './constants';
-import downloadjs from 'downloadjs';
-import html2canvas from 'html2canvas';
+import { ITextStyles } from '../types/models';
 
-/* Fetch data */
-
-const params: RequestInit = {
-    headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY,
-    },
-};
+const headers: any = { headers: { 'x-api-key': API_KEY } };
 
 export const fetchAll = async () => {
-    const response = await fetch(API_URL_IMAGES, params);
+    const response = await fetch(API_URL_IMAGES, headers);
     const body = await response.json();
 
     if (response.status >= 300) throw Error(body.message);
@@ -26,7 +19,7 @@ export const fetchAll = async () => {
 };
 
 export const fetchCategories = async () => {
-    const response = await fetch(`${API_URL_CATEGORIES}`, params);
+    const response = await fetch(API_URL_CATEGORIES);
     const body = await response.json();
 
     if (response.status >= 300) throw Error(body.message);
@@ -35,7 +28,7 @@ export const fetchCategories = async () => {
 };
 
 export const fetchCategory = async (id: string) => {
-    const response = await fetch(`${API_URL_IMAGES_BY_CATEGORY}${id}`, params);
+    const response = await fetch(`${API_URL_IMAGES_BY_CATEGORY}${id}`, headers);
     const body = await response.json();
 
     if (response.status >= 300) throw Error(body.message);
@@ -43,59 +36,71 @@ export const fetchCategory = async (id: string) => {
     return body;
 };
 
+
 /* Image preview and download */
-export const downloadImage = async (
-    containerEl: string,
-    imageEl: string,
-    width: number,
-    height: number,
-    name: string
-) => {
-    const preview = document.querySelector<HTMLElement>(containerEl);
-    if (!preview) return;
-
-    const canvas = await html2canvas(preview);
-    const ctx = canvas.getContext('2d');
-    const img = document.querySelector<HTMLImageElement>(imageEl);
-
-    if (ctx && img) {
-        drawImage(ctx, img, width, height).then(() => {
-            const dataURL = canvas.toDataURL('image/png');
-            downloadjs(dataURL, `${name}.png`, 'image/png');
-        });
-    }
-};
-
-const drawImage = (
+export const drawImage = (
     ctx: CanvasRenderingContext2D,
-    image: HTMLImageElement,
-    imageWidth: number,
-    imageHeight: number
+    imageObj: HTMLImageElement,
+    phrases: string[],
+    textStyles: ITextStyles
 ) => {
     return new Promise(resolve => {
-        const { x, y, width, height } = image.getBoundingClientRect();
-        console.log(
-            'dx: '+ 0,
-            'dy: ' + 0,
-            'dW: ' + imageWidth,
-            'dH: ' + imageHeight,
-            'sx: ' + x,
-            'sy: ' + y,
-            width,
-            height)
+        const canvas = ctx.canvas;
         const canvasImg = new Image();
+
+        var imgWidth = imageObj.naturalWidth;
+        var screenWidth = canvas.width;
+        var scaleX = 1;
+        if (imgWidth > screenWidth) scaleX = screenWidth / imgWidth;
+        var imgHeight = imageObj.naturalHeight;
+        var screenHeight = canvas.height;
+        var scaleY = 1;
+        if (imgHeight > screenHeight) scaleY = screenHeight / imgHeight;
+        var scale = scaleY;
+        if (scaleX < scaleY) scale = scaleX;
+        if (scale < 1) {
+            imgHeight = imgHeight * scale;
+            imgWidth = imgWidth * scale;
+        }
+
+        canvas.height = imgHeight;
+        canvas.width = imgWidth;
 
         canvasImg.onload = () => {
             ctx.drawImage(
                 canvasImg,
                 0,
                 0,
-                imageWidth,
-                imageHeight,
+                imageObj.naturalWidth,
+                imageObj.naturalHeight,
+                0,
+                30,
+                imgWidth,
+                imgHeight
             );
+            drawText(ctx, phrases[0], textStyles, 'top', imgWidth, imgHeight);
+            phrases[1] && drawText(ctx, phrases[1], textStyles, 'bottom', imgWidth, imgHeight);
             resolve(true);
         };
         canvasImg.crossOrigin = 'anonymous';
-        canvasImg.src = 'https://cors-anywhere.herokuapp.com/' + image.src;
+        canvasImg.src = PROXY_SERVER + imageObj.src + "?=not-cache";
     });
 };
+
+
+function drawText(
+    ctx: CanvasRenderingContext2D,
+    text: string,
+    styles: ITextStyles,
+    position: 'top' | 'bottom',
+    imgWidth: number,
+    imgHeight: number
+) {
+    const { font, size, color } = styles;
+    ctx.fillStyle = color;
+    ctx.textBaseline = 'middle';
+    ctx.font = `600 ${size} ${font}`;
+    ctx.textAlign = 'center';
+    position === 'top' && ctx.fillText(text, imgWidth / 2, 80, 600);
+    position === 'bottom' && ctx.fillText(text, imgWidth / 2, imgHeight - 50, 600);
+}

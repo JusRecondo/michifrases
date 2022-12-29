@@ -20,7 +20,7 @@ const SelectCategory: React.FC<Props> = ({ onChange }) => {
 
     return (
         <div>
-            <Select options={categories} onChange={onChange} />
+            <Select label="Categorías:" options={categories} onChange={onChange}  />
         </div>
     );
 };

@@ -1,0 +1,20 @@
+.editSection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.inputsSection {
+    flex: 1;
+
+    input[type="text"] {
+        width: 72%;
+    }
+}
+
+.textStyles {
+    background: #dfdfdf;
+    margin-top: 20px;
+    padding: 10px;
+}
