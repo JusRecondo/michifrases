@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import EditPage from './pages/EditPage/EditPage';
+import Home from './pages/Home/Home';
+import './styles/App.scss';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <header>
+                <h1>Michi Frases</h1>
+                <h2>App para crear fotos de gatitos con frases</h2>
+            </header>
+            <main>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/edit-cat/:id" element={<EditPage />} />
+                </Routes>
+            </main>
+        </BrowserRouter>
+    );
 }
 
 export default App;
