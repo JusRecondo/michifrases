@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/michifrases/static/css/main.f7237a91.css",
-    "main.js": "/michifrases/static/js/main.2760da2d.js",
+    "main.css": "/michifrases/static/css/main.906c0593.css",
+    "main.js": "/michifrases/static/js/main.61fb4537.js",
     "static/media/ms_sans_serif.woff": "/michifrases/static/media/ms_sans_serif.aac84aa6de42b83d1a62.woff",
     "static/media/ms_sans_serif_bold.woff": "/michifrases/static/media/ms_sans_serif_bold.9fbe71248995f1c639d4.woff",
     "static/media/ms_sans_serif.woff2": "/michifrases/static/media/ms_sans_serif.0348082abb503fb6a8c2.woff2",
     "static/media/ms_sans_serif_bold.woff2": "/michifrases/static/media/ms_sans_serif_bold.7fcf57cc6e87ecddbf64.woff2",
     "index.html": "/michifrases/index.html",
-    "main.f7237a91.css.map": "/michifrases/static/css/main.f7237a91.css.map",
-    "main.2760da2d.js.map": "/michifrases/static/js/main.2760da2d.js.map"
+    "main.906c0593.css.map": "/michifrases/static/css/main.906c0593.css.map",
+    "main.61fb4537.js.map": "/michifrases/static/js/main.61fb4537.js.map"
   },
   "entrypoints": [
-    "static/css/main.f7237a91.css",
-    "static/js/main.2760da2d.js"
+    "static/css/main.906c0593.css",
+    "static/js/main.61fb4537.js"
   ]
 }
