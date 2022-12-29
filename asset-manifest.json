@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/michifrases/static/css/main.89f42488.css",
-    "main.js": "/michifrases/static/js/main.9654cea4.js",
+    "main.js": "/michifrases/static/js/main.5682bc25.js",
     "index.html": "/michifrases/index.html",
     "main.89f42488.css.map": "/michifrases/static/css/main.89f42488.css.map",
-    "main.9654cea4.js.map": "/michifrases/static/js/main.9654cea4.js.map"
+    "main.5682bc25.js.map": "/michifrases/static/js/main.5682bc25.js.map"
   },
   "entrypoints": [
     "static/css/main.89f42488.css",
-    "static/js/main.9654cea4.js"
+    "static/js/main.5682bc25.js"
   ]
 }
